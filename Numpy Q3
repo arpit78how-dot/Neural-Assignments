@@ -1,0 +1,29 @@
+import numpy as np
+#Given array represents age and slaary
+X = np.array([
+    [25, 50000],
+    [17, 30000],
+    [35, 80000],
+    [42, 90000],
+    [19, 25000],
+    [31, 70000]
+])
+
+#(1)People whose age >=25
+print("(1) People whose age is >= 25:", X[X[:, 0] >= 25])
+#(2)People salary >60000
+print("\n(2)People whose salary >60000 :", X[X[:, 1]> 60000])
+
+#(3)People whose age >25 AND slary >60000
+print("\n(3)People whose age>25 and salary >60000 :", X[(X[:,0]>=25) & (X[:, 1] > 60000)])
+
+#(4)Replace salries below 30000 with 30000
+cond = X[X[:, 1] < 30000, 1] = 30000
+print("\nArray after replacing salaries below 30000:") 
+print(cond)
+
+#(5)Averge salary
+print("\nAverage salary: ", np.mean(X[:,1]))
+
+#(6)Average slary only for people age>=25
+print("\nAverage slary for given conditon : ",np.mean(X[X[:, 0] >= 25, 1]))
