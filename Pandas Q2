@@ -1,0 +1,33 @@
+import pandas as pd
+data = {
+ "Age": [20, 21, None, 24, None, 30],
+ "Salary": [30000, None, 40000, 50000, None, 60000],
+ "Experience": [1, 2, 3, None, 5, 6],
+ "Department": ["CS", "IT", "CS", None, "IT", "CS"]
+}
+df = pd.DataFrame(data)
+#1. Display the DataFrame.
+print("(1) Original DataFrame:", df)
+
+#2. Count missing values in every column.
+print("\n(2) Missing values in each column:") 
+print(df.isnull().sum())
+#3. Fill missing Age using the median.
+d=df["Age"] = df["Age"].fillna(df["Age"].median())
+print("(3)",d)
+
+#4. Fill missing Salary using the median.
+a = df["Salary"] = df["Salary"].fillna(df["Salary"].median())
+print("(4)",a)
+#5. Fill missing Experience using the median.
+b =df["Experience"] = df["Experience"].fillna(df["Experience"].median())
+print("(5)",b)
+#6. Fill missing Department using the mode.
+c = df["Department"] = df["Department"].fillna(df["Department"].mode()[0])
+print("(6)",c)
+#7. Verify that there are no missing values.
+print("\n(7) Missing values after cleaning:") 
+print(df.isnull().sum())
+#8. Print the cleaned DataFrame.
+print("\n(8) Cleaned DataFrame:") 
+print(df)
