@@ -1,0 +1,35 @@
+import pandas as pd
+data = {
+ "Name": ["A", "B", "C", "D", "E", "F"],
+ "Math": [80, 60, 90, 70, 85, 55],
+ "Science": [75, 65, 95, 72, 80, 60],
+ "English": [85, 70, 88, 75, 90, 50]
+}
+df = pd.DataFrame(data)
+
+#1. Create an Average column.
+df["Average"] = df[["Math", "Science", "English"]].mean(axis=1) 
+print("(1) Average column:") 
+print(df[["Name", "Average"]])
+#2. Create a Total column.
+df["Total"] = df[["Math", "Science", "English"]].sum(axis=1)
+print("\n(2) Total column:") 
+print(df[["Name", "Total"]])
+#3. Create a Passed column where: Average >= 60 -> True, Average < 60 -> False.
+df["Passed"] = df["Average"] >= 60 
+print("\n(3) Passed column:") 
+print(df[["Name", "Average", "Passed"]])
+#4. Find the student with the highest average.
+print("\n(4) Student with the highest average:") 
+print(df.loc[df["Average"].idxmax()])
+#5. Find students whose average is >= 80.
+print("\n(5) Students whose average is >= 80:") 
+print(df[df["Average"] >= 80])
+#6. Sort by average in descending order.
+print("\n(6) Students sorted by average:") 
+print(df.sort_values(by="Average", ascending=False))
+#7. Calculate the overall average.
+print("\n(7) Overall average:") 
+print(df["Average"].mean())
+#8. Display only Name, Average, and Passed.
+print(df[["Name", "Average", "Passed"]])
