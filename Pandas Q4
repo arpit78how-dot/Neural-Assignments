@@ -1,0 +1,36 @@
+import pandas as pd 
+#Given data 
+data = { "Employee": ["A", "B", "C", "D", "E", "F", "G", "H"], 
+        "Department": ["CS", "CS", "IT", "IT", "CS", "IT", "HR", "HR"], 
+        "Salary": [50000, 60000, 55000, 65000, 70000, 75000, 40000, 45000], 
+        "Experience": [2, 4, 3, 5, 6, 7, 1, 2] } 
+df = pd.DataFrame(data)
+#1. Calculate the average salary for each department.
+print("(1) Average salary by department:") 
+print(df.groupby("Department")["Salary"].mean())
+
+#2. Calculate the maximum salary for each department.
+print("\n(2) Maximum salary by department:") 
+print(df.groupby("Department")["Salary"].max())
+
+#3. Calculate the minimum salary for each department.
+print("\n(3) Minimum salary by department:") 
+print(df.groupby("Department")["Salary"].min())
+
+#4. Calculate the average experience for each department.
+print("\n(4) Average experience by department:") 
+print(df.groupby("Department")["Experience"].mean())
+
+#5. Find the department with the highest average salary.
+average_salary = df.groupby("Department")["Salary"].mean() 
+print("\n(5) Department with the highest average salary:") 
+print(average_salary.idxmax()) 
+print("Average salary:", average_salary.max())
+
+#6. Count employees in each department.
+print("\n(6) Number of employees in each department:") 
+print(df.groupby("Department")["Employee"].count())
+
+#7. Sort departments by average salary.
+print("\n(7) Departments sorted by average salary:") 
+print(average_salary.sort_values(ascending=False))
