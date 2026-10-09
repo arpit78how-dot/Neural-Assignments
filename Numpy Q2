@@ -1,0 +1,26 @@
+import numpy as np
+
+X = np.array([
+ [10, 100, 1000],
+ [20, 200, 2000],
+ [30, 300, 3000],
+ [40, 400, 4000],
+ [50, 500, 5000]
+])
+
+#(1)Mean of each column
+mean = np.mean(X, axis=0)
+print("(1)Mean of each colimn:", np.mean(X, axis=0))
+
+#(2)Standard deviation of each column
+std = np.std(X, axis=0)
+print("(2)Standard deviations of each column:", np.std(X, axis=0))
+
+#(3)Standardize every feature using broadcasting
+X_scale = (X - mean)/std
+#(4)Print the scaled matrix
+print("\n (4)Scaled matrix is :", X_scale)
+#(5)Verify mean, std deviation of scaled columns
+print("\n (5)Verification\n")
+print("mean of scaled column :", np.mean(X_scale, axis=0))
+print("Std deviation of scaled column :", np.std(X_scale, axis=0))
